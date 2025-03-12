@@ -5,7 +5,6 @@ import { apiURL, authURL, clientId, clientSecret } from "./envService";
 const Url = `${authURL}/api/v1/Client/login`;
 
 export const clientLogin = async () => {
-    debugger;
     const accessToken = localStorage.getItem("accessToken");
 
     if (!accessToken) {

@@ -1,84 +1,48 @@
 "use client";
-
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { useRouter } from "next/navigation";
-import { toast } from "sonner"; // For notifications
-import { authURL, clientId, clientSecret } from "@/service/envService";
+import { toast } from "sonner"; 
+import { clientLogin } from "@/service/axiosService";
+import { userLogin } from "@/server/command/userLogin";
+import { LoginProps } from "@/types/loginInput";
 
 const LoginPage = () => {
-  const [loginInput, setLoginInput] = useState({
+  const [loginInput, setLoginInput] = useState<LoginProps>({
     username: "",
     password: "",
   });
-  const [error, setError] = useState(""); // 🔹 Track error messages
+  const [error, setError] = useState(""); 
   const router = useRouter();
 
-  const authUrl = `${authURL}/api/v1/Client/login`;
-
-  // 🔹 Auto-login to get access token
-  const clientLogin = async () => {
-    const accessToken = localStorage.getItem("accessToken");
-
-    if (!accessToken) {
-      try {
-        const response = await axios.post(authUrl, {
-          clientId: clientId,
-          clientSecret: clientSecret,
-        });
-
-        localStorage.setItem("accessToken", response.data.accessToken);
-        localStorage.setItem("refreshToken", response.data.refreshToken);
-      } catch (error) {
-        toast.error("Authentication failed. Please check credentials.");
-      }
-    }
-  };
-
   useEffect(() => {
-    clientLogin();
+    clientLogin(); // ✅ Corrected function call
   }, []);
 
-  // 🔹 Handle user login
   const handleLoginSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+  
     if (!loginInput.username || !loginInput.password) {
       setError("Username and password are required.");
       toast.error("Username and password are required.");
       return;
     }
-
+  
     try {
-      const res = await axios.post(`${authURL}/api/v1/User/Login`, loginInput, {
-        headers: {
-          accessToken: localStorage.getItem("accessToken"),
-        },
-      });
-
-      const { idToken, refreshToken, firstName, lastName, username } = res.data;
-
-      localStorage.setItem("fullname", `${firstName} ${lastName}`);
-      localStorage.setItem("username", username);
-      localStorage.setItem("userRefreshToken", refreshToken);
-      localStorage.setItem("user", JSON.stringify(res.data));
-      localStorage.setItem("idToken", idToken);
-      localStorage.setItem("isAuthenticated", JSON.stringify(true));
-
-      toast.success("Login successful!");
-      router.push("/");
+      const response = await userLogin(loginInput); // ✅ Await response
+      if (response) {
+        router.push("/"); // Only navigate if login is successful
+      }
     } catch (err: unknown) {
-      if (axios.isAxiosError(err)) {
-        const errorMessage = err.response?.data?.message || "Invalid Username or Password";
-        
-        setError(errorMessage); // 🔹 Set error message to state
-        toast.error(errorMessage); // 🔹 Show error toast
+      if (err instanceof Error) {
+        setError(err.message); // Show specific error message
+        toast.error(err.message); // Show error notification
       } else {
         setError("An unexpected error occurred.");
-        toast.error("An unexpected error occurred.");
+        toast.error("An unexpected error occurred."); // Show general error
       }
     }
   };
+  
 
   return (
     <div className="flex h-screen items-center justify-center bg-gray-100">
@@ -109,10 +73,7 @@ const LoginPage = () => {
           </button>
         </form>
 
-        {/* 🔹 Display error messages below the form */}
-        {error && (
-          <p className="text-red-500 text-center mt-4">{error}</p>
-        )}
+        {error && <p className="text-red-500 text-center mt-4">{error}</p>}
       </div>
     </div>
   );

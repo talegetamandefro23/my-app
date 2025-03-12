@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Menu, Moon, Router, Sun, User } from "lucide-react";
+import Cookies from "js-cookie"; 
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 
 
@@ -15,9 +16,25 @@ const router = useRouter();
     setDarkMode(!darkMode);
     document.documentElement.classList.toggle("dark");
   };
-  const logout =()=>{
-   router.push("/auth/login")
-  }
+
+    const logout = () => {
+      // Remove localStorage items
+      localStorage.removeItem("idToken");
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("refreshToken");
+      localStorage.removeItem("userRefreshToken");
+      localStorage.removeItem("fullname");
+      localStorage.removeItem("username");
+      localStorage.removeItem("user");
+      localStorage.removeItem("isAuthenticated");
+   
+      Cookies.remove("authToken");
+      Cookies.remove("refreshToken");
+
+      router.push("/auth/login");
+    };
+  
+
 
   return (
     <header className="sticky top-0 w-full bg-white dark:bg-gray-900 shadow-md">

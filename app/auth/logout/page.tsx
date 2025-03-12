@@ -1,16 +1,28 @@
-"use client";
-import { signOut } from "next-auth/react";
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+// "use client";
+// import { useRouter } from "next/navigation";
+// import { useEffect } from "react";
+// import Cookies from "js-cookie"; // Import js-cookie
 
-export default function Logout() {
-  const router = useRouter();
+// export default function Logout() {
+//   const router = useRouter();
 
-  useEffect(() => {
-    signOut({ redirect: false }).then(() => {
-      router.push("/auth/login"); // Redirect to login page manually
-    });
-  }, [router]);
+//   useEffect(() => {
+//     // Remove from localStorage
+//     localStorage.removeItem("idToken");
+//     localStorage.removeItem("accessToken");
+//     localStorage.removeItem("refreshToken");
+//     localStorage.removeItem("userRefreshToken");
+//     localStorage.removeItem("fullname");
+//     localStorage.removeItem("username");
+//     localStorage.removeItem("user");
+//     localStorage.removeItem("isAuthenticated");
+ 
+//     Cookies.remove("authToken");
+//     Cookies.remove("refreshToken");
 
-  return null; // No UI, just redirects
-}
+//     // Redirect to login page
+//     router.replace("/auth/login");
+//   }, [router]);
+
+//   return null;
+// }
