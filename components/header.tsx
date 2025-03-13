@@ -16,19 +16,16 @@ const router = useRouter();
     setDarkMode(!darkMode);
     document.documentElement.classList.toggle("dark");
   };
-
     const logout = () => {
-      // Remove localStorage items
-      localStorage.removeItem("idToken");
-      localStorage.removeItem("accessToken");
-      localStorage.removeItem("refreshToken");
-      localStorage.removeItem("userRefreshToken");
-      localStorage.removeItem("fullname");
+      localStorage.removeItem("lastname");
+      localStorage.removeItem("firstname");
       localStorage.removeItem("username");
       localStorage.removeItem("user");
       localStorage.removeItem("isAuthenticated");
    
       Cookies.remove("authToken");
+      Cookies.remove("userRefreshToken");
+      Cookies.remove("accessToken");
       Cookies.remove("refreshToken");
 
       router.push("/auth/login");
@@ -37,7 +34,7 @@ const router = useRouter();
 
 
   return (
-    <header className="sticky top-0 w-full bg-white dark:bg-gray-900 shadow-md">
+    <header className="sticky top-0 w-full bg-transparent dark:bg-gray-900 shadow-md">
       <div className="">
 
         {/* Right Side (Theme Toggle + User Menu) */}

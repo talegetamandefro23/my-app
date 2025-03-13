@@ -10,7 +10,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="bg-gray-900 text-white py-4 text-center mt-10">
+    <footer className="bg-transparent-900 text-dark py-4 text-center mt-10">
       <p className="text-sm">&copy; {year} My App. All rights reserved.</p>
     </footer>
   );

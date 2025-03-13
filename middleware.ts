@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export function middleware(req: NextRequest) {
-  console.log("Cookies in request:", req.cookies.getAll()); // Debugging: See all cookies
+   console.log("Cookies in request:", req.cookies.getAll()); // Debugging: See all cookies
 
   const authToken = req.cookies.get("authToken"); // Use correct cookie name
 
