@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation"; 
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { Menu, Moon, Router, Sun, User } from "lucide-react";
+import { Moon,Sun, User } from "lucide-react";
 import Cookies from "js-cookie"; 
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 
@@ -17,7 +17,6 @@ const router = useRouter();
     document.documentElement.classList.toggle("dark");
   };
     const logout = () => {
-      debugger;
       localStorage.removeItem("lastname");
       localStorage.removeItem("firstname");
       localStorage.removeItem("username");

@@ -17,7 +17,7 @@ const LoginPage = () => {
 
   useEffect(() =>  {
     const fetchData = async () => {
-        debugger;
+        setLoading(true);
         const response = await clientLogin(); 
       if(response?.status)
       {
@@ -28,6 +28,7 @@ const LoginPage = () => {
         setError(response?.message);
         
       }
+      setLoading(false);
     }
     fetchData(); 
   }, []);

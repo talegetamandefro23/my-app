@@ -20,7 +20,7 @@ export default function Dashboard({
   breadcrumb,
   children,
 }: {
-  breadcrumb?: any;
+  breadcrumb?:string
   children: React.ReactNode;
 }) {
   return (
