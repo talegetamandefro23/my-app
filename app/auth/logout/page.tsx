@@ -1,28 +1,12 @@
-// "use client";
-// import { useRouter } from "next/navigation";
-// import { useEffect } from "react";
-// import Cookies from "js-cookie"; // Import js-cookie
+import { LogOut } from 'lucide-react'
+import React from 'react'
 
-// export default function Logout() {
-//   const router = useRouter();
+const page = () => {
+  return (
+    <div>
+      < LogOut/>
+    </div>
+  )
+}
 
-//   useEffect(() => {
-//     // Remove from localStorage
-//     localStorage.removeItem("idToken");
-//     localStorage.removeItem("accessToken");
-//     localStorage.removeItem("refreshToken");
-//     localStorage.removeItem("userRefreshToken");
-//     localStorage.removeItem("fullname");
-//     localStorage.removeItem("username");
-//     localStorage.removeItem("user");
-//     localStorage.removeItem("isAuthenticated");
- 
-//     Cookies.remove("authToken");
-//     Cookies.remove("refreshToken");
-
-//     // Redirect to login page
-//     router.replace("/auth/login");
-//   }, [router]);
-
-//   return null;
-// }
+export default page

@@ -1,14 +1,39 @@
 "use server"
-import { authURL } from '@/service/envService';
+import { authURL,clientId, clientSecret  } from '@/service/envService';
 import { LoginProps } from '@/types/loginInput';
 import axios from 'axios';
 import { cookies } from 'next/headers';
 
+
+const Url = `${authURL}/api/v1/Client/login`;
+
+export async function clientLogin() {
+  const cookiesStore = await cookies(); // ✅ Call inside the function
+  const accessToken = cookiesStore.get("accessToken")?.value;
+
+  if (!accessToken) {
+      try {
+          const response = await axios.post(Url, {
+              clientId: clientId,
+              clientSecret: clientSecret,
+          });
+          return {
+              data: response.data,
+              status: true,
+              message: "Client Login Successfully",
+          };
+      } catch (error: any) {
+          return {
+              data: null,
+              status: false,
+              message: error.response?.data?.errors?.[0] || "Client Login failed. Please try again.",
+          };
+      }
+  }
+}
 export async function userLogin(data:LoginProps) {
 try{
-const cookiesStore = await cookies()
-// console.log("accessToken:", cookiesStore.get("accessToken")?.value); // Read token from cookies
-
+  const cookiesStore = await cookies()
       const res = await axios.post(`${authURL}/api/v1/User/Login`, data, {
         headers: {
           accessToken: cookiesStore.get("accessToken")?.value, // Read token from cookies

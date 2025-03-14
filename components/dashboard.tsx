@@ -26,29 +26,30 @@ export default function Dashboard({
   return (
     <div>
       <div>
-      <Header />
+     
     <SidebarProvider>
-  
       <AppSidebar />
       <SidebarInset>
         <div className="z-10 sticky top-0 left-0 w-full mb-3 bg-white dark:bg-gray-950">
-          <header className="flex h-14 items-center justify-between transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
-            <div className="flex items-center gap-2 px-4">
-              <SidebarTrigger className="-ml-1" />
-              <Separator orientation="vertical" className="mr-2 h-4" />
-              <Breadcrumb>
-                <BreadcrumbList>
-                  <BreadcrumbItem className="hidden md:block">
-                    <BreadcrumbLink href="#" className="text-primary">{breadcrumb}</BreadcrumbLink>
-                  </BreadcrumbItem>
-                  <BreadcrumbSeparator className="hidden md:block" />
-                </BreadcrumbList>
-              </Breadcrumb>
-            </div>
-            {/* <div className="flex items-center gap-2 px-4">
-              <ModeToggle />
-            </div> */}
-          </header>
+        <header className="w-full flex justify-between p-4">
+        <div className="flex items-center gap-2">
+          <SidebarTrigger className="ml-1" />
+          <Separator orientation="vertical" className="mr-2 h-4" />
+          <Breadcrumb>
+            <BreadcrumbList className="flex items-center justify-between">
+              <BreadcrumbItem className="hidden md:block">
+                <BreadcrumbLink href="#" className="text-primary">{breadcrumb}</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator className="hidden md:block" />
+            </BreadcrumbList>
+          </Breadcrumb>
+        </div>
+        <div>
+          <Header />
+        </div>
+      </header>
+
+
         </div>
         <div className="mx-5">{children}</div>
        

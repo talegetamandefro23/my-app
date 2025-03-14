@@ -17,6 +17,7 @@ const router = useRouter();
     document.documentElement.classList.toggle("dark");
   };
     const logout = () => {
+      debugger;
       localStorage.removeItem("lastname");
       localStorage.removeItem("firstname");
       localStorage.removeItem("username");
@@ -34,7 +35,6 @@ const router = useRouter();
 
 
   return (
-    <header className="sticky top-0 w-full bg-transparent dark:bg-gray-900 shadow-md">
       <div className="">
 
         {/* Right Side (Theme Toggle + User Menu) */}
@@ -60,6 +60,5 @@ const router = useRouter();
           </DropdownMenu>
         </div>
       </div>
-    </header>
   );
 }

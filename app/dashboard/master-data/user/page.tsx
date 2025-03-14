@@ -1,11 +1,13 @@
 import { getAllUsers } from '@/server/query/users';
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import React from 'react';
+import Dashboard from '@/components/dashboard';
 
 const Page = async () => {
   const response = await getAllUsers(`/posts`);
 console.log(response);
   return (
+    <Dashboard breadcrumb="User">
 <Dialog>
       <DialogTrigger asChild>
         <button className="bg-blue-500 text-white px-4 py-2 rounded">Open Dialog</button>
@@ -15,19 +17,7 @@ console.log(response);
         <p>This is a modern dialog using ShadCN UI.</p>
       </DialogContent>
     </Dialog>
-//     <div>
-//       <h1>All Users</h1>
-//       <ul>
-//   {response.map((user: any) => (
-//     <li key={user.id}>
-//       <strong>UserId:</strong> {user.userId} <br />
-//       <strong>ID:</strong> {user.id}<br />
-//       <strong>Title:</strong> {user.title}<br/>
-//       <strong>Body:</strong> {user.body}<br/>
-//     </li>
-//   ))}
-// </ul>
-//     </div>
+    </Dashboard>
   );
 };
 

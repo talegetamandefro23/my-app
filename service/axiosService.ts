@@ -1,45 +1,7 @@
 
 import axios from "axios";
-import { useEffect } from "react";
-import Cookies from "js-cookie"; 
-import { apiURL, authURL, clientId, clientSecret } from "./envService";
 
-const Url = `${authURL}/api/v1/Client/login`;
-
-export const clientLogin = async () => {
-    const accessToken = localStorage.getItem("accessToken");
-
-    if (!accessToken) {
-        try {
-            const response = await axios.post(Url, {
-                clientId: clientId,
-                clientSecret: clientSecret,
-            });
-
-            // localStorage.setItem("accessToken", response.data.accessToken);
-            // localStorage.setItem("refreshToken", response.data.refreshToken);
-
-            Cookies.set("accessToken", response.data.accessToken);
-            
-             Cookies.set("refreshToken", response.data.refreshToken);
-
-
-        } catch (error) {
-            console.error("Login error:", error);
-        }
-    }
-};
-
-export const logoutUser = () => {
-    localStorage.clear();
-};
-
-// Custom Hook for handling authentication
-export const useClientLogin = () => {
-    useEffect(() => {
-        clientLogin();
-    }, []);
-};
+import { apiURL, authURL } from "./envService";
 
 export const axiosLogin = axios.create({
     baseURL: authURL,
