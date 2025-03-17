@@ -5,6 +5,9 @@ import { toast } from "sonner";
 import { userLogin ,clientLogin } from "@/server/command/userLogin";
 import { LoginProps } from "@/types/loginInput";
 import Cookies from "js-cookie";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 
 const LoginPage = () => {
   const [loginInput, setLoginInput] = useState<LoginProps>({
@@ -68,8 +71,16 @@ const LoginPage = () => {
     <div>
    
     <div className="flex h-screen items-center justify-center bg-gray-100">
-      <div className="w-full max-w-md bg-white p-6 rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold text-center mb-6">Login</h2>
+      <div className="">
+        {/* <h2 className="text-2xl font-bold text-center mb-6">Login</h2> */}
+        <Card>
+        <CardHeader>
+          <CardTitle>Login to your account</CardTitle>
+          <CardDescription>
+            Enter your username below to login to your account
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
         <form onSubmit={handleLoginSubmit} className="space-y-4">
           <input
             type="text"
@@ -87,6 +98,18 @@ const LoginPage = () => {
             className="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-blue-300"
             required
           />
+
+            <div className="flex items-center gap-2">
+              <Checkbox className="border-2 border-black peer" id="remember" />
+              <Label htmlFor="remember">Remember me</Label>
+              <button
+                type="button"
+                className="ml-auto text-sm underline-offset-4 hover:underline text-blue-500"
+                onClick={() => router.push("/auth/forgotPassword")} // ✅ Redirect when clicked
+              >
+                Forgot your password?
+              </button>
+            </div>
           <button
             type="submit"
             className={`w-full py-2 rounded-lg text-white flex justify-center items-center ${
@@ -109,6 +132,8 @@ const LoginPage = () => {
         </form>
 
         {error && <p className="text-red-500 text-center mt-4">{error}</p>}
+        </CardContent>
+        </Card>
       </div>
     </div>
     </div>
