@@ -54,3 +54,29 @@ try{
 
     }
 }
+
+ export async function forgotPassword(data?:string)
+ {
+try{
+  const cookiesStore = await cookies()
+  const response = await axios.post(`${authURL}/api/v1/forgotpassword`,data,{
+    headers: {
+      accessToken: cookiesStore.get("accessToken")?.value, // Read token from cookies
+    },
+  });
+  return{
+  data: response.data,
+   status: true,
+   message:"Secsses"
+  };
+
+}
+catch(error: any)
+{
+return{
+  data: null,
+  status: false,
+  message: error.response?.data?.message||"error occured"
+}
+}
+ }

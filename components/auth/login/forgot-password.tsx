@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "sonner";
+import { forgotPassword } from "@/server/command/userLogin";
 
 export default function ForgotPassword() {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -13,19 +14,24 @@ export default function ForgotPassword() {
 
   // Simulated API request
   const onSubmit = async (data: any) => {
+    debugger;
     setLoading(true);
+  //  const response = await forgotPassword(data)
+  //  if(response.status)
+  //   {}
+  //  else{}
+  try {
+    // Simulate API call delay
+    await new Promise((resolve) => setTimeout(resolve, 2000));
 
-    try {
-      // Simulate API call delay
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+    // Simulate API response success
+    toast.success("Password reset link sent to " + data.email);
+  } catch (error) {
+    toast.error("Something went wrong! Please try again.");
+  }
 
-      // Simulate API response success
-      toast.success("Password reset link sent to " + data.email);
-    } catch (error) {
-      toast.error("Something went wrong! Please try again.");
-    }
-
-    setLoading(false);
+  setLoading(false);
+   
   };
 
   return (
