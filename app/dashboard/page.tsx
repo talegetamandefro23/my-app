@@ -2,6 +2,7 @@
 import Dashboard from "@/components/dashboard";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import Home from "@/components/home/page"
 
 export default function Page() {
   const router = useRouter();
@@ -14,8 +15,7 @@ export default function Page() {
   return (
     <Dashboard breadcrumb="Dashboard">
     <div className="">
-      <p>Dashboard</p>
-
+    <Home />
     </div>
     </Dashboard>
   );

@@ -1,13 +1,13 @@
-import React from 'react'
-import Home from "@/components/home/page"
-import Dashboard from '@/components/dashboard'
+import { redirect } from "next/navigation";
 
 export default function page() {
-  return (
-    <div>
-      <Dashboard breadcrumb="Home">
-      <Home />
-      </Dashboard>
-    </div>
-  )
+  redirect("/auth/login");
+  return  null;
+  // return (
+  //   // <div>
+  //   //   <Dashboard breadcrumb="Home">
+  //   //   <Home />
+  //   //   </Dashboard>
+  //   // </div>
+  // )
 }
