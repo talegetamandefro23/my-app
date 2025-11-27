@@ -10,14 +10,14 @@ export function middleware(req: NextRequest) {
   if (req.nextUrl.pathname.startsWith("/dashboard") && !authToken) {
     return NextResponse.redirect(new URL("/auth/login", req.url));
   }
- 
+
   if (req.nextUrl.pathname.startsWith("/auth") && authToken) {
     return NextResponse.redirect(new URL("/dashboard", req.url));
   }
-//   else
-//  if (req.nextUrl.pathname.startsWith("/auth") && !authToken) {
-//      return NextResponse.redirect(new URL("/auth/login", req.url));
-//    }
+  //   else
+  //  if (req.nextUrl.pathname.startsWith("/auth") && !authToken) {
+  //      return NextResponse.redirect(new URL("/auth/login", req.url));
+  //    }
 
   return NextResponse.next();
 }

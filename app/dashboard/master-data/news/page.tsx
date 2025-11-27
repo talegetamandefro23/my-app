@@ -1,11 +1,11 @@
 import Dashboard from "@/components/dashboard";
-import DepartmentPage from "@/components/dashboard/master-data/department/page";
+import NewsPage from "@/components/dashboard/master-data/news/page";
 import React from "react";
 
 const Page = () => {
   return (
-    <Dashboard breadcrumb="Department">
-      <DepartmentPage />
+    <Dashboard breadcrumb="News">
+      <NewsPage />
     </Dashboard>
   );
 };
