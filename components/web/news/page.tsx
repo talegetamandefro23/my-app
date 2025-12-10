@@ -1,5 +1,4 @@
 "use client";
-
 import { Button } from "@/components/ui/button";
 import { Facebook, Instagram, Linkedin, Send, Twitter } from "lucide-react";
 import Image from "next/image";

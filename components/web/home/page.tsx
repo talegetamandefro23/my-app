@@ -1,5 +1,4 @@
 "use client";
-
 import {
   Card,
   CardContent,
@@ -10,7 +9,7 @@ import {
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { cn } from "@/lib/utils";
+import Image from "next/image";
 import AnimatedProgress from "@/components/web/home/animation";
 
 export default function HomePage() {
@@ -119,7 +118,7 @@ export default function HomePage() {
     <div className="space-y-0 text-foreground relative bg-white">
       {/* HERO SECTION */}
       <section className="relative h-[80vh] overflow-hidden">
-        <img
+        <Image
           src={currentImage.src}
           alt={currentImage.alt}
           className="w-full h-full object-cover"

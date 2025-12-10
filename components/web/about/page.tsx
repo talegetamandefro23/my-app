@@ -32,6 +32,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -93,7 +94,7 @@ export default function AboutPage() {
   return (
     <div>
       <section className="relative h-[60vh] overflow-hidden">
-        <img
+        <Image
           src={currentImage.src}
           alt={currentImage.alt}
           className="w-full h-full object-cover"
