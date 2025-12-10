@@ -107,7 +107,7 @@ export default function HomePage() {
   ];
 
   const team = [
-    { name: "Full Name", role: "Put role here", image: "/team1.jpg" },
+    { name: "Full Name", role: "Put role here", image: "" },
     { name: "Full Name", role: "Put rol here", image: "/team2.jpg" },
     { name: "Full Name", role: "Put role here", image: "/team3.jpg" },
   ];

@@ -166,7 +166,7 @@ export default function PublicLayout({
 
           <div className="flex justify-center space-x-6 text-gray-300">
             <Link href="https://www.linkedin.com">LinkedIn</Link>
-            <Link href="https://www.facebook.com">Facebook</Link>
+            <Link href="https://www.facebook.com/weynamba">Facebook</Link>
             <Link href="https://www.twitter.com">Twitter</Link>
           </div>
         </div>
