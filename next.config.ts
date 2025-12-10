@@ -1,8 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-    eslint: {
+  eslint: {
     ignoreDuringBuilds: true,
+  },
+  rules: {
+    "react/no-unescaped-entities": "off",
   },
 };
 

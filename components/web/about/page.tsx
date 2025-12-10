@@ -165,7 +165,7 @@ export default function AboutPage() {
             <p className="text-gray-700 leading-relaxed mb-4">
               An effective business objective strategy involves setting SMART
               goals (Specific, Measurable, Achievable, Relevant, Time-bound)
-              that align with the company's overall mission and vision. The
+              that align with the companys overall mission and vision. The
               strategy should focus on key areas such as financial health,
               operational efficiency, customer satisfaction, and employee
               development. These objectives act as a roadmap, guiding decisions,

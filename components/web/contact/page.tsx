@@ -71,7 +71,7 @@
 // }
 
 import { useState } from "react";
-import { Mail, Phone, MapPin, FileAxis3D } from "lucide-react"; // 👈 Lucide icons
+import { Mail, Phone, MapPin } from "lucide-react"; // 👈 Lucide icons
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
