@@ -127,7 +127,7 @@ export default function PublicLayout({
                 { name: "News", href: "/web/news" },
                 { name: "Contacts", href: "/web/contact" },
                 { name: "Gallery", href: "/web/gallery" },
-                { name: "Admin Dashboard", href: "/auth/login" },
+                // { name: "Admin Dashboard", href: "/auth/login" },
               ].map((item, i) => (
                 <NavigationMenuItem key={i}>
                   <NavigationMenuLink asChild>
