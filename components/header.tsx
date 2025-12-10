@@ -28,7 +28,7 @@ const router = useRouter();
       Cookies.remove("accessToken");
       Cookies.remove("refreshToken");
 
-      router.push("/auth/login");
+      // router.push("/auth/login");
     };
   
 
