@@ -345,8 +345,8 @@ export default function HomePage() {
             <h3 className="text-xl font-semibold text-green-700 mb-2">
               Contact Details
             </h3>
-            <p className="text-muted-foreground">📞 +251 900 000 000</p>
-            <p className="text-muted-foreground">📧 info@weynambatrading.com</p>
+            <p className="text-muted-foreground">📞 +251 937 922 229</p>
+            <p className="text-muted-foreground">📧 admin@weynamba.com.et</p>
             <p className="text-muted-foreground">📍 Addis Ababa, Ethiopia</p>
           </div>
         </div>
