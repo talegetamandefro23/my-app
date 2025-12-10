@@ -1,11 +1,11 @@
-import { getAllUsers } from '@/server/query/users';
+// import { getAllUsers } from '@/server/query/users';
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import React from 'react';
 import Dashboard from '@/components/dashboard';
 
 const Page = async () => {
-  const response = await getAllUsers(`/posts`);
-console.log(response);
+//   const response = await getAllUsers(`/posts`);
+// console.log(response);
   return (
     <Dashboard breadcrumb="User">
 <Dialog>
