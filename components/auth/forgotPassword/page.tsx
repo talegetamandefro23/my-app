@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "sonner";
-import { forgotPassword } from "@/server/command/userLogin";
+// import { forgotPassword } from "@/server/command/userLogin";
 
 export default function ForgotPassword() {
   const { register, handleSubmit, formState: { errors } } = useForm();
