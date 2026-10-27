@@ -1,78 +1,14 @@
-"use client";
-
-// import { useEffect, useState } from "react";
-// import Image from "next/image";
-
-// export default function GalleryPage() {
-//   const [gallery, setGallery] = useState<any[]>([]);
-
-//   useEffect(() => {
-//     fetch("/api/gallery")
-//       .then((res) => res.json())
-//       .then(setGallery);
-//   }, []);
-
-//   return (
-//     <section className="container mx-auto px-6 py-12 text-center">
-//       <h1 className="text-4xl font-bold mb-8 text-green-700">Gallery</h1>
-
-//       <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-//         {gallery.map((item, i) => (
-//           <div
-//             key={i}
-//             className="relative rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow"
-//           >
-//             <Image
-//               src={item.src}
-//               alt={item.title}
-//               width={400}
-//               height={300}
-//               className="w-full h-56 object-cover"
-//             />
-//             <div className="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition flex items-center justify-center">
-//               <p className="text-white text-lg font-semibold">{item.title}</p>
-//             </div>
-//           </div>
-//         ))}
-//       </div>
-//     </section>
-//   );
-// }
-
-
 import Image from "next/image";
 
+const images = [
+  { src: "/1.jpeg", alt: "Ethiopian landscape", caption: "Ethiopia" },
+  { src: "/image.jpeg", alt: "Coffee and agricultural products", caption: "Coffee & agriculture" },
+  { src: "/image1.jpeg", alt: "Weyn Amba Trading company image", caption: "Weyn Amba Trading" },
+  { src: "/team1.jpg", alt: "Weyn Amba team", caption: "Our people" },
+  { src: "/team2.jpg", alt: "Weyn Amba team", caption: "Working together" },
+  { src: "/2.jpg", alt: "Weyn Amba Trading company image", caption: "Our work" },
+];
+
 export default function GalleryPage() {
-  const galleryItems = [
-    { src: "/images/gallery1.jpg", title: "Coffee Processing Plant" },
-    { src: "/images/gallery2.jpg", title: "Export Logistics Hub" },
-    { src: "/images/gallery3.jpg", title: "Team at Work" },
-    { src: "/images/gallery4.jpg", title: "Branch Opening Ceremony" },
-  ];
-
-  return (
-    <section className="container mx-auto px-6 py-12 text-center">
-      <h1 className="text-4xl font-bold mb-8 text-green-700">Gallery</h1>
-
-      <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {galleryItems.map((item, i) => (
-          <div
-            key={i}
-            className="relative rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow"
-          >
-            <Image
-              src={item.src}
-              alt={item.title}
-              width={400}
-              height={300}
-              className="w-full h-56 object-cover"
-            />
-            <div className="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition flex items-center justify-center">
-              <p className="text-white text-lg font-semibold">{item.title}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
+  return <div className="site-page"><section className="page-hero"><div className="section-wrap"><p className="eyebrow">GALLERY</p><h1>A closer look at our world.</h1><p>Images from Ethiopia and the people and products connected to Weyn Amba Trading.</p></div></section><section className="content-section"><div className="section-wrap"><div className="gallery-grid">{images.map(image => <figure className="gallery-tile" key={image.src}><Image src={image.src} alt={image.alt} fill sizes="(max-width: 650px) 100vw, (max-width: 900px) 50vw, 33vw" /><figcaption><span>{image.caption}</span></figcaption></figure>)}</div></div></section></div>;
 }

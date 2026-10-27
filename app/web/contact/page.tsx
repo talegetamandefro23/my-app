@@ -1,12 +1,9 @@
+import type { Metadata } from "next";
+import ContactPage from "@/components/web/contact/page";
+import PublicLayout from "@/components/web/layout/page";
 
-import ContactPage from '@/components/web/contact/page'
-import PublicLayout from '@/components/web/layout/page'
-import React from 'react'
+export const metadata: Metadata = { title: "Contact" };
 
-export default function page() {
-  return (
-    <PublicLayout>
-      <ContactPage/>
-     </PublicLayout>
-  )
+export default function Page() {
+  return <PublicLayout><ContactPage /></PublicLayout>;
 }

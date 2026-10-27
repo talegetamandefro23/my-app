@@ -1,0 +1,32 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_PRISMA_URL")
+}
+// 📁 prisma/schema.prisma
+// ... (existing datasource, generator, and Task model)
+
+// --- New News Post Model ---
+model NewsPost {
+  id        Int      @id @default(autoincrement())
+  title     String   @db.VarChar(150)
+  content   String   // Stores the main body of the news article
+  slug      String   @unique // URL-friendly identifier (e.g., /news/my-first-post)
+  author    String   @default("Admin") // Can be replaced with a User model later
+  isPublished Boolean @default(false) // Ready to go live
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Optional: Add a short excerpt/summary for listing pages
+  excerpt   String?  @db.VarChar(300)
+}

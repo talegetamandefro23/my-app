@@ -1,61 +1,12 @@
-"use client";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
-import Image from "next/image";
-import { CheckCircle } from "lucide-react";
+const services = [
+  { title: "Export services", description: "Support for businesses looking to bring Ethiopian products to international markets, with attention to quality and the requirements of each trade relationship." },
+  { title: "Logistics & transportation", description: "Coordination that helps goods move from source to destination. We work with partners to support efficient, dependable delivery." },
+  { title: "Trade & business support", description: "A responsive partner for trade inquiries, procurement discussions and business development opportunities connected to our areas of work." },
+];
 
 export default function ServicesPage() {
-  const services = [
-    {
-      title: "Export Services",
-      description:
-        "We facilitate the export of premium Ethiopian goods including coffee, oilseeds, and pulses, ensuring quality and compliance with global standards.",
-      image: "/images/export-service.jpg",
-    },
-    {
-      title: "Logistics & Transportation",
-      description:
-        "Our logistics solutions guarantee efficient and timely delivery of goods from source to destination.",
-      image: "/images/logistics.jpg",
-    },
-    {
-      title: "Consulting & Business Support",
-      description:
-        "We provide strategic consulting for trade, procurement, and business development in Ethiopia and abroad.",
-      image: "/images/consulting.jpg",
-    },
-  ];
-
-  return (
-    <div className="container mx-auto px-6 py-12">
-      <h1 className="text-4xl font-bold text-center text-green-700 mb-8">
-        About Our Services
-      </h1>
-
-      <div className="space-y-12">
-        {services.map((service, i) => (
-          <div
-            key={i}
-            className="grid md:grid-cols-2 gap-8 items-center bg-white/90 rounded-xl shadow-md overflow-hidden border-t-4 border-green-700"
-          >
-            <Image
-              src={service.image}
-              alt={service.title}
-              width={600}
-              height={400}
-              className="w-full h-80 object-cover"
-            />
-            <div className="p-8">
-              <h2 className="text-2xl font-semibold text-green-700 mb-4 flex items-center gap-2">
-                <CheckCircle className="w-6 h-6 text-green-600" />
-                {service.title}
-              </h2>
-              <p className="text-gray-700 leading-relaxed">
-                {service.description}
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+  return <div className="site-page"><section className="page-hero"><div className="section-wrap"><p className="eyebrow">OUR SERVICES</p><h1>Practical support for trade and movement.</h1><p>We work with businesses and partners to support products as they move through the supply chain—from the point of origin to the wider market.</p></div></section><section className="content-section"><div className="section-wrap"><div className="service-list">{services.map((service, i) => <article className="service-row" key={service.title}><span className="service-number">0{i + 1}</span><h2>{service.title}</h2><p>{service.description}</p></article>)}</div><div style={{ marginTop: 42 }}><Link href="/web/contact" className="text-link">Discuss a business need <ArrowRight size={16} /></Link></div></div></section></div>;
 }
